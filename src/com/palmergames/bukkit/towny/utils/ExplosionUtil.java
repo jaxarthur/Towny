@@ -3,12 +3,12 @@ package com.palmergames.bukkit.towny.utils;
 import org.bukkit.Location;
 
 import com.palmergames.bukkit.towny.TownyAPI;
+import com.palmergames.bukkit.towny.TownyUniverse;
 import com.palmergames.bukkit.towny.object.Coord;
 import com.palmergames.bukkit.towny.object.Town;
 import com.palmergames.bukkit.towny.object.TownBlock;
 import com.palmergames.bukkit.towny.object.TownyWorld;
 import com.palmergames.bukkit.towny.war.common.WarZoneConfig;
-import com.palmergames.bukkit.towny.war.eventwar.War;
 
 public class ExplosionUtil {
 
@@ -53,7 +53,7 @@ public class ExplosionUtil {
 		TownBlock townBlock = TownyAPI.getInstance().getTownBlock(loc);
 		Town town = TownyAPI.getInstance().getTown(loc);
 
-		if (TownyAPI.getInstance().isWarTime() && WarZoneConfig.explosionsBreakBlocksInWarZone() && War.isWarZone(townBlock.getWorldCoord())){
+		if (TownyAPI.getInstance().isWarTime() && WarZoneConfig.explosionsBreakBlocksInWarZone() && TownyUniverse.getInstance().hasWarEvent(townBlock)){
 			return true;				
 		}
 		if ((!townBlock.getPermissions().explosion) || (TownyAPI.getInstance().isWarTime() && WarZoneConfig.isAllowingExplosionsInWarZone() && !town.hasNation() && !town.isBANG()))
