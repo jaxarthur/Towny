@@ -114,10 +114,9 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>Xadzkon</groupId>
+            <groupId>com.github.ElgarL</groupId>
             <artifactId>GroupManager</artifactId>
-            <version>0.2.0</version>
-            <scope>provided</scope>
+            <version>v2.5</version>
         </dependency>
         <dependency>
             <groupId>net.citizensnpcs</groupId>
