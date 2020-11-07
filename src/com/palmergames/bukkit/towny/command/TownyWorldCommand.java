@@ -60,6 +60,7 @@ public class TownyWorldCommand extends BaseCommand implements CommandExecutor {
 		"fire",
 		"townmobs",
 		"worldmobs",
+		"wildernessmobs",
 		"revertunclaim",
 		"revertexpl",
 		"warallowed"
@@ -352,7 +353,7 @@ public class TownyWorldCommand extends BaseCommand implements CommandExecutor {
 				player.sendMessage(ChatTools.formatCommand("", "/TownyWorld toggle", "pvp/forcepvp", ""));
 				player.sendMessage(ChatTools.formatCommand("", "/TownyWorld toggle", "explosion/forceexplosion", ""));
 				player.sendMessage(ChatTools.formatCommand("", "/TownyWorld toggle", "fire/forcefire", ""));
-				player.sendMessage(ChatTools.formatCommand("", "/TownyWorld toggle", "townmobs/worldmobs", ""));
+				player.sendMessage(ChatTools.formatCommand("", "/TownyWorld toggle", "townmobs/worldmobs/wildernessmobs", ""));
 				player.sendMessage(ChatTools.formatCommand("", "/TownyWorld toggle", "revertunclaim/revertexpl", ""));
 			} else {
 				sender.sendMessage(ChatTools.formatTitle("/TownyWorld toggle"));
@@ -468,6 +469,15 @@ public class TownyWorldCommand extends BaseCommand implements CommandExecutor {
 
 				Globalworld.setWorldMobs(!Globalworld.hasWorldMobs());
 				msg = String.format(TownySettings.getLangString("msg_changed_world_setting"), "World Mob spawns", Globalworld.getName(), Globalworld.hasWorldMobs() ? TownySettings.getLangString("enabled") : TownySettings.getLangString("disabled"));
+				if (player != null)
+					TownyMessaging.sendMsg(player, msg);
+				else
+					TownyMessaging.sendMsg(msg);
+
+			} else if (split[0].equalsIgnoreCase("wildernessmobs")) {
+				
+				Globalworld.setWildernessMobs(!Globalworld.hasWildernessMobs());
+				msg = String.format(TownySettings.getLangString( "msg_changed_world_setting"), "Wilderness Mob spawns", Globalworld.getName(), Globalworld.hasWildernessMobs() ? TownySettings.getLangString("enabled") : TownySettings.getLangString("disabled"));
 				if (player != null)
 					TownyMessaging.sendMsg(player, msg);
 				else
